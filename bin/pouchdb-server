@@ -135,7 +135,14 @@ var args = nomnom
 var app = express();
 
 var pouchDBApp = require('express-pouchdb')({
-  configPath: getArg('config')
+  configPath: getArg('config'),
+  overrideMode: {
+    exclude: [
+      'routes/authentication',
+      'routes/authorization',
+      'routes/session'
+    ]
+  }
 });
 
 function getArg(name) {
